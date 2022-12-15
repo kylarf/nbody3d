@@ -17,3 +17,8 @@ m = [1988500e24 5.97219e24 7.349e22];
 plotresults(x, true);
 geocentric = x(:,2:3,:) - x(:,2,:);
 plotresults(geocentric, true)
+
+columns = reshape(x, [], 9);
+headings = ["x_sun", "y_sun", "z_sun", "x_earth", "y_earth", "z_earth", "x_moon", "y_moon", "z_moon"];
+data = array2table(columns, 'VariableNames', headings);
+writetable(data, "earthmoonsun.csv")
